@@ -34,7 +34,8 @@ This discovery is not just a mathematical curiosity. It directly impacts several
 - **Operation Reduction**: Replaces `~12` modular multiplications/additions per pair with a single 3D scalar product.
 - **GPU/SIMD Ready**: Perfectly maps to warp-level `dot3` kernels, enabling `30–50×` throughput on modern accelerators.
 - **Security Margins**: Refines concrete complexity estimates for `$j=0$` curves. Does **not** break `secp256k1`, but tightens practical bounds for relation-collection phases.
-Impact on ECC and ECDLP:
+
+### Impact on ECC and ECDLP:
 This structural property directly optimizes the relation collection phase in Index Calculus-based cryptanalysis. Validation complexity drops from O(|B|^2) full polynomial evaluations to O(|B| * 3) precomputed dot products. Memory consumption remains below 1 MB using a streaming row-echelon solver, and the operation maps efficiently to GPU/SIMD architectures. Importantly, this does not break secp256k1 or reduce the asymptotic complexity of ECDLP, which remains exponential for generic curves. It refines concrete security estimates for j=0 curves by accelerating a known computational bottleneck.
 Performance Gains:
 CPU: 10-30x faster relation validation. Replaces ~12 modular multiplications/additions per pair with a single 3D dot product.
