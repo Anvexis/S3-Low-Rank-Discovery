@@ -2,27 +2,24 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
-[![Status: Empirical](https://img.shields.io/badge/status-empirical-orange.svg)](#%EF%B8%8F-limitations--security-note)
+[![Status: Empirical](https://img.shields.io/badge/status-empirical-orange.svg)](#limitations--security-note)
 [![arXiv](https://img.shields.io/badge/arXiv-pending-lightgrey.svg)](#)
 
-> **TL;DR:** We empirically discovered that the relation matrix formed by Semaev's 3rd summation polynomial `$S_3(x_i, x_j, x_R)$` over `$j=0$` elliptic curves (e.g., `secp256k1`) exhibits a **stable algebraic rank of `$r=3$`**, independent of field size (`$p \le 2^{64}$`) and factor base size (`$|\mathcal{B}| \le 2000$`). This enables `$O(|\mathcal{B}| \cdot 3)$` relation validation, drastically optimizing a core bottleneck in elliptic curve cryptanalysis and finite-field linear algebra.
-
----
+> **TL;DR:** We empirically discovered that the relation matrix formed by Semaev's 3rd summation polynomial $S_3(x_i, x_j, x_R)$ over $j=0$ elliptic curves (e.g., `secp256k1`) exhibits a **stable algebraic rank of $r=3$**, independent of field size ($p \le 2^{64}$) and factor base size ($|\mathcal{B}| \le 2000$). This enables $O(|\mathcal{B}| \cdot 3)$ relation validation, drastically optimizing a core bottleneck in elliptic curve cryptanalysis and finite-field linear algebra.
 
 ## 🔑 Core Discovery & Empirical Results
 
 | Polynomial | Matrix Construction | Observed Rank | Stability |
-|------------|---------------------|---------------|-----------|
-| `$S_3$` | `$M_{ij} = S_3(x_i, x_j, x_R)$` | **3** | ✅ Stable for `$p \in [2^{20}, 2^{64}]$`, `$|\mathcal{B}| \le 2000$` |
-| `$S_4$` | Fixed 2 targets | **5** | ✅ Stable for `$|\mathcal{B}| \ge 10$` |
-| `$S_5$` | Fixed 3 targets | **9** | ✅ Stable for `$|\mathcal{B}| \ge 8$` |
-| `$S_6$` | Fixed 4 targets | `$n$` (full) | ❌ Low-rank structure breaks for `$m \ge 6$` under this slicing |
+| :--- | :--- | :---: | :--- |
+| $S_3$ | $M_{ij} = S_3(x_i, x_j, x_R)$ | **3** | ✅ Stable for $p \in [2^{20}, 2^{64}]$, $|\mathcal{B}| \le 2000$ |
+| $S_4$ | Fixed 2 targets | **5** | ✅ Stable for $|\mathcal{B}| \ge 10$ |
+| $S_5$ | Fixed 3 targets | **9** | ✅ Stable for $|\mathcal{B}| \ge 8$ |
+| $S_6$ | Fixed 4 targets | $n$ (full) | ❌ Low-rank structure breaks for $m \ge 6$ under this slicing |
 
-- **Algebraic Bound**: `$\text{rank}(M) \le (\deg_{x_1} S_3 + 1)(\deg_{x_2} S_3 + 1) = 9$`. Empirical stabilization at `3` is attributed to `$j=0$` automorphisms (`$\text{Aut}(E) \cong C_6$`) and symmetric invariants.
-- **Memory Complexity**: `$O(|\mathcal{B}| \cdot r)$` via streaming row-echelon solver (`<1 MB` for `$|\mathcal{B}|=2000$`)
-- **Time Complexity**: `$O(|\mathcal{B}|^2 \cdot r)$` with `gmpy2` acceleration
-- **Reproducibility**: All experiments are deterministic, logged, and export publication-ready CSV/PDF outputs.
-
+- **Algebraic Bound:** $\text{rank}(M) \le (\deg_{x_1} S_3 + 1)(\deg_{x_2} S_3 + 1) = 9$. Empirical stabilization at $3$ is attributed to $j=0$ automorphisms ($\text{Aut}(E) \cong C_6$) and symmetric invariants.
+- **Memory Complexity:** $O(|\mathcal{B}| \cdot r)$ via streaming row-echelon solver ($<1\text{ MB}$ for $|\mathcal{B}|=2000$).
+- **Time Complexity:** $O(|\mathcal{B}|^2 \cdot r)$ with `gmpy2` acceleration.
+- **Reproducibility:** All experiments are deterministic, logged, and export publication-ready CSV/PDF outputs.
 ---
 
 ## 🌍 Practical Applications
