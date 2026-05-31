@@ -74,7 +74,6 @@ S3-Low-Rank-Discovery/
 ├── requirements.txt                # 📦 Python dependencies (gmpy2, psutil, matplotlib, pandas, tqdm)
 ├── .gitignore                      # 🛡️ Ignores results/, venv/, __pycache__, *.csv, *.log
 ├── LICENSE                         # ⚖️ MIT License
-├── CITATION.cff                    # 📜 Machine-readable citation (Zenodo/arXiv ready)
 └── README.md                       # 🌐 Project overview, empirical results, applications & setup
 
 
@@ -120,18 +119,6 @@ python3 plots/visualize_ranks.py
 🔒 No Practical Break: Index Calculus for general elliptic curves remains exponential. This optimizes a sub-quadratic phase and does not compromise secp256k1 or current ECC deployments.
 📉 Higher Polynomials: Low-rank structure does not generalize to $S_m$ for $m \ge 6$ under fixed-target slicing. The phenomenon is specific to $S_3$ (and partially $S_4, S_5$) due to degree/symmetry constraints.
 
-📜 Citation & License
-This project is licensed under the MIT License.
-If you use these experiments, code, or results in your research, please cite:
-```bash
-@misc{semaev_low_rank_2026,
-  title={Empirical Low-Rank Structure of Semaev's Summation Polynomials over $j=0$ Elliptic Curves},
-  author={Andrii Arlashkin/ Anvexis},
-  year={2026},
-  url={https://github.com/yourusername/S3-Low-Rank-Discovery},
-  note={Computational verification up to $p \approx 2^{64}$, $|\mathcal{B}| \le 2000$}
-}
-```
 
 🤝 Contributing & Future Work
 Contributions are highly welcome! Priority areas:
