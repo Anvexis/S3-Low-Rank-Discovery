@@ -58,20 +58,24 @@ This discovery is not just a mathematical curiosity. It directly impacts several
 
 S3-Low-Rank-Discovery/
 ├── src/
-│ └── semaev_utils.py # Shared math: S3, rank solvers, prime generation
+│   └── semaev_utils.py          # 🧮 Core math: S3, rank solvers, prime generation, factor base sampling
 ├── experiments/
-│ ├── streaming_rank_verified.py # Strict REF solver (rank=3 confirmed)
-│ ├── fast_streaming_solver.py # Parallel chunked solver
-│ ├── sparse_large_p.py # Matrix-free solver for p≈2^80
-│ ├── test_S5_rank.py # S5 resultant-based rank test
-│ └── test_S6_rank.py # S6 resultant-based rank test
+│   ├── streaming_rank_verified.py  # ✅ Strict REF solver (rank=3 confirmed up to p≈2^64)
+│   ├── fast_streaming_solver.py    # ⚡ Parallel chunked solver with early-exit stabilization
+│   ├── sparse_large_p.py           # 🌐 Matrix-free streaming solver for p≈2^80
+│   ├── test_S5_rank.py             # 🔬 S5 resultant-based rank test
+│   └── test_S6_rank.py             # 🔬 S6 resultant-based rank test
 ├── plots/
-│ └── visualize_ranks.py # Publication-ready matplotlib figures
-├── results/ # CSV outputs (gitignored)
-├── run_all_experiments.py # Orchestrator with progress tracking
-├── requirements.txt
-├── LICENSE
-└── README.md
+│   └── visualize_ranks.py          # 📊 Publication-ready matplotlib figures (PDF/PNG)
+├── docs/
+│   └── proof_sketch.md             # 📐 Algebraic intuition, invariant subspaces & symmetry analysis
+├── results/                        # 🚫 Gitignored: CSV outputs, logs, temporary data
+├── run_all_experiments.py          # 🔄 Orchestrator with tqdm progress bar & auto-logging
+├── requirements.txt                # 📦 Python dependencies (gmpy2, psutil, matplotlib, pandas, tqdm)
+├── .gitignore                      # 🛡️ Ignores results/, venv/, __pycache__, *.csv, *.log
+├── LICENSE                         # ⚖️ MIT License
+├── CITATION.cff                    # 📜 Machine-readable citation (Zenodo/arXiv ready)
+└── README.md                       # 🌐 Project overview, empirical results, applications & setup
 
 
 ---
